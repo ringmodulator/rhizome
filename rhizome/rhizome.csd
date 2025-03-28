@@ -19,7 +19,7 @@ instr Voice
   kGliss = expseg:k(iStartFreq, 120, iStartFreq, (iDur-240), iEndFreq, 120, iEndFreq) ; Pitch envelope
   iPhase = random:i(0,1) ; Random phase
   aOsc = vco2:a(iAmp,kGliss,12,0,iPhase) ; Triangle wave oscillator
-  aVol = expseg:a(0.01, 15, 105, 100, 1, 120, 0.15, (iDur-360), 0.25, 110, 1, 10, 0.001) ; Volume envelope
+  aVol = expseg:a(0.01, 20, 1, 100, 1, 120, 0.15, (iDur-360), 0.25, 110, 1, 10, 0.001) ; Volume envelope
   aSig = aOsc * aVol
   aSigL = aSig * sqrt(1-iPan)
   aSigR = aSig * sqrt(iPan)
