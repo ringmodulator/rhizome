@@ -1,6 +1,7 @@
 <CsoundSynthesizer>
 <CsOptions>
 -o dac
+-i adc
 </CsOptions>
 <CsInstruments>
 
@@ -26,10 +27,25 @@ instr Voice
   out(aSigL, aSigR)
 endin
 
+instr Loop
+    iDur = p3 ; Duration (seconds)
+    aSig    inch 1                  ; read audio input from channel 1
+    iFdback = 0.99                   ; feedback ratio
+    aDelay1  init 0                  ; initialize delayed signal
+    aDelay2  init 0                  ; initialize delayed signal
+    aDelay1  delay aSig + (aDelay1 * iFdback), 10 ; delay 10 seconds
+    aDelay2  delay aSig + (aDelay2 * iFdback), 10.13 ; delay 10.13 seconds
+    aRing = aDelay1 * aDelay2 ; multiply delayed signals
+    aVol = expseg:a(0.01, 20, 1, (iDur-40), 1, 20, 0.01) ; Volume envelope
+    aSig = aRing * aVol
+    out(aSig, aSig)             ; output to both channels
+endin
+
 </CsInstruments>
 <CsScore>
 // Score parameter fields
 //p1      p2   p3   p4      p5
+i "Loop" 0 1200
 i	"Voice"	0	  1200	116.54	-24
 i	"Voice"	10	1190	130.81	-24
 i	"Voice"	20	1180	233.08	-24

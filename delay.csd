@@ -11,11 +11,13 @@ nchnls = 2
 
 instr Loop
     aSig    inch 1                  ; read audio input from channel 1
-    iFdback = 0.7                   ; feedback ratio
-    aDelay  init 0                  ; initialize delayed signal
-    aDelay  delay aSig + (aDelay * iFdback), 10 ; delay 10 seconds
-    aOut    = aSig + (aDelay * 0.4) ; mix original and delayed signal
-    out aOut/2, aOut/2              ; output to both channels
+    iFdback = 0.9                   ; feedback ratio
+    aDelay1  init 0                  ; initialize delayed signal
+    aDelay2  init 0                  ; initialize delayed signal
+    aDelay1  delay aSig + (aDelay1 * iFdback), 10 ; delay 10 seconds
+    aDelay2  delay aSig + (aDelay2 * iFdback), 10.5 ; delay 10.5 seconds
+    aRing = aDelay1 * aDelay2 ; multiply delayed signals
+    out aRing, aRing             ; output to both channels
 endin
 
 </CsInstruments>
