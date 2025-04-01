@@ -41,11 +41,22 @@ instr Loop
     out(aSig, aSig)             ; output to both channels
 endin
 
+instr Record ; write to a file (always on in order to record everything)
+  aSigL, aSigR monitor                              ; read audio from output bus
+  fout "rhizome.wav",4,aSigL,aSigR   ; write audio to file (16bit stereo)
+endin
+
 </CsInstruments>
 <CsScore>
 // Score parameter fields
 //p1      p2   p3   p4      p5
+; Record performance
+i "Record" 0 1200
+
+; Loop instrument
 i "Loop" 0 1200
+
+; Synthesizer instrument
 i	"Voice"	0	  1200	116.54	-24
 i	"Voice"	10	1190	130.81	-24
 i	"Voice"	20	1180	233.08	-24
