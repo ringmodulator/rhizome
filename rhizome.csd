@@ -1,8 +1,10 @@
 <CsoundSynthesizer>
 <CsOptions>
 -o dac
+-i adc
 </CsOptions>
 <CsInstruments>
+; Futile sketch (for Susan Alcorn)
 
 sr = 44100
 ksmps = 64
@@ -18,7 +20,7 @@ instr Voice
   iPan = random:i(0.01,1) ; Random pan
   kGliss = expseg:k(iStartFreq, 240, iStartFreq, (iDur-360), iEndFreq, 120, iEndFreq) ; Pitch envelope
   aOsc = vco2:a(iAmp,kGliss,12) ; Triangle wave oscillator
-  aVol = expseg:a(0.01, 20, 1, (iDur-40), .5, 20, 0.01) ; Volume envelope
+  aVol = expseg:a(0.01, 20, 1, (iDur-40), .3, 20, 0.01) ; Volume envelope
   aSig = aOsc * aVol
   aFilter = moogladder:a(aSig, 1864.64, 0.2) ; Moog ladder filter
   aSigL = aFilter * sqrt(1-iPan)
@@ -26,10 +28,36 @@ instr Voice
   out(aSigL, aSigR)
 endin
 
+instr Loop
+    iDur = p3 ; Duration (seconds)
+    aSig    inch 1                  ; read audio input from channel 1
+    iFdback = 0.99                   ; feedback ratio
+    aDelay1  init 0                  ; initialize delayed signal
+    aDelay2  init 0                  ; initialize delayed signal
+    aDelay1  delay aSig + (aDelay1 * iFdback), 10 ; delay 10 seconds
+    aDelay2  delay aSig + (aDelay2 * iFdback), 10.13 ; delay 10.13 seconds
+    aRing = aDelay1 * aDelay2 ; multiply delayed signals
+    aVol = expseg:a(0.01, 20, 1, (iDur-40), 1, 20, 0.01) ; Volume envelope
+    aSig = clip(aRing * aVol, -0.8, 0.8) ; clip the signal
+    out(aSig, aSig)             ; output to both channels
+endin
+
+instr Record ; write to a file (always on in order to record everything)
+  aSigL, aSigR monitor                              ; read audio from output bus
+  fout "rhizome.wav",4,aSigL,aSigR   ; write audio to file (16bit stereo)
+endin
+
 </CsInstruments>
 <CsScore>
 // Score parameter fields
 //p1      p2   p3   p4      p5
+; Record performance
+i "Record" 0 1200
+
+; Loop instrument
+i "Loop" 0 1200
+
+; Synthesizer instrument - Convert these pitches to just intonation in key of Bb
 i	"Voice"	0	  1200	116.54	-24
 i	"Voice"	10	1190	130.81	-24
 i	"Voice"	20	1180	233.08	-24
