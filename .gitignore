@@ -1,31 +1,3 @@
-rhizome/Audio Files/.DS_Store
-rhizome/.DS_Store
-rhizome/.musicapps-project-folder
-rhizome/Audio Files/rhizome.wav
-rhizome/rhizome.logicx/Alternatives/000/DisplayState.plist
-rhizome/rhizome.logicx/Alternatives/000/DisplayStateArchive
-rhizome/rhizome.logicx/Alternatives/000/MetaData.plist
-rhizome/rhizome.logicx/Alternatives/000/ProjectData
-rhizome/rhizome.logicx/Alternatives/000/WindowImage.jpg
-rhizome/rhizome.logicx/Alternatives/000/Project File Backups/00/MetaData.plist
-rhizome/rhizome.logicx/Alternatives/000/Project File Backups/00/ProjectData
-rhizome/rhizome.logicx/Alternatives/000/Project File Backups/01/MetaData.plist
-rhizome/rhizome.logicx/Alternatives/000/Project File Backups/01/ProjectData
-rhizome/rhizome.logicx/Alternatives/000/Project File Backups/02/MetaData.plist
-rhizome/rhizome.logicx/Alternatives/000/Project File Backups/02/ProjectData
-rhizome/rhizome.logicx/Alternatives/000/Project File Backups/03/MetaData.plist
-rhizome/rhizome.logicx/Alternatives/000/Project File Backups/03/ProjectData
-rhizome/rhizome.logicx/Alternatives/000/Project File Backups/04/MetaData.plist
-rhizome/rhizome.logicx/Alternatives/000/Project File Backups/04/ProjectData
-rhizome/rhizome.logicx/Alternatives/000/Project File Backups/05/MetaData.plist
-rhizome/rhizome.logicx/Alternatives/000/Project File Backups/05/ProjectData
-rhizome/rhizome.logicx/Alternatives/000/Project File Backups/06/MetaData.plist
-rhizome/rhizome.logicx/Alternatives/000/Project File Backups/06/ProjectData
-rhizome/rhizome.logicx/Alternatives/000/Project File Backups/07/MetaData.plist
-rhizome/rhizome.logicx/Alternatives/000/Project File Backups/07/ProjectData
-rhizome/rhizome.logicx/Alternatives/000/Project File Backups/08/MetaData.plist
-rhizome/rhizome.logicx/Alternatives/000/Project File Backups/08/ProjectData
-rhizome/rhizome.logicx/Alternatives/000/Project File Backups/09/MetaData.plist
-rhizome/rhizome.logicx/Alternatives/000/Project File Backups/09/ProjectData
-rhizome/rhizome.logicx/Resources/ProjectInformation.plist
-rhizome/Audio Files/rhizome1.wav
+.DS_Store
+*.wav
+rhizome/
